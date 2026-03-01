@@ -3,122 +3,513 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gold Essence – Luxury Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Parcel Boy — Smart Hyperlocal Delivery Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #d4af37;
-      --text-light: #fefbf3;
+      --bg: #060812;
+      --panel: #0d1224;
+      --panel-2: #121a31;
+      --text: #dce6ff;
+      --muted: #8e9bc1;
+      --accent: #57f4ff;
+      --accent-2: #6d7cff;
+      --success: #57ffba;
+      --warning: #ffc457;
+      --danger: #ff6f91;
+      --border: rgba(87, 244, 255, 0.18);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { scroll-behavior: smooth; height:100%; }
-    body { font-family:'Poppins', sans-serif; background:#000; color:var(--text-light); overflow-x:hidden; }
 
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px 60px; position:fixed; width:100%; top:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid var(--gold); }
-    header h1 { font-family:'Playfair Display'; font-size:28px; color:var(--gold); letter-spacing:2px; }
-    nav a { color:var(--text-light); margin:0 20px; text-decoration:none; font-weight:600; transition:0.3s; }
-    nav a:hover { color:var(--gold); text-shadow:0 0 8px var(--gold); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(1200px circle at 10% -20%, rgba(109, 124, 255, 0.25), transparent 55%),
+        radial-gradient(900px circle at 90% 0%, rgba(87, 244, 255, 0.22), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { width: min(1160px, 92%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(6, 8, 18, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .brand-badge {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      font-weight: 700;
+      color: #041018;
+      background: linear-gradient(135deg, var(--accent), #abfffe);
+      box-shadow: 0 0 20px rgba(87, 244, 255, 0.5);
+    }
+
+    nav { display: flex; flex-wrap: wrap; gap: 14px; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: 0.25s;
+    }
+
+    nav a:hover { color: var(--accent); }
 
     .hero {
-      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden;
-      background-image:url('https://www.sliderrevolution.com/wp-content/uploads/2024/10/cool-website-effects-f.jpg');
-      background-size:cover; background-position:center; background-repeat:no-repeat;
+      position: relative;
+      padding: 96px 0 66px;
     }
-    .hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
-    .hero h2, .hero p { position:relative; z-index:1; }
-    .hero h2 { font-family:'Playfair Display'; font-size:60px; background:linear-gradient(90deg,var(--gold),#fff8d9); -webkit-background-clip:text; color:transparent; animation:fadeIn 3s ease-in-out; }
-    .hero p { max-width:700px; margin:20px auto; font-size:18px; color:#ddd; animation:fadeInUp 2s ease-in-out; }
-    .cta { position:relative; display:inline-block; margin-top:30px; padding:14px 36px; background:linear-gradient(90deg,var(--gold),#f7d778); border:none; color:#000; font-weight:700; border-radius:35px; cursor:pointer; transition:0.3s; box-shadow:0 0 15px rgba(212,175,55,0.6); }
-    .cta:hover { transform:scale(1.05); }
 
-    @keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
-    @keyframes fadeInUp {0%{opacity:0; transform:translateY(30px);}100%{opacity:1; transform:translateY(0);}}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
 
-    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; padding:100px 40px; background:#111; text-align:center; }
-    .feature { padding:30px; border:1px solid rgba(212,175,55,0.4); border-radius:20px; background:rgba(255,255,255,0.05); transition:0.4s; }
-    .feature:hover { transform:translateY(-10px); box-shadow:0 0 20px rgba(212,175,55,0.3); }
-    .feature h3 { color:var(--gold); font-family:'Playfair Display'; margin-bottom:10px; }
-    .feature img { width:100%; border-radius:15px; margin-top:15px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      color: var(--accent);
+      font-size: 0.83rem;
+      margin-bottom: 16px;
+      background: rgba(87, 244, 255, 0.08);
+    }
 
-    .people-section { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:40px; padding:100px 20px; background:linear-gradient(180deg,#000,#1a1a1a); }
-    .person { width:220px; height:320px; border-radius:20px; overflow:hidden; position:relative; cursor:pointer; transition:transform 0.4s; }
-    .person:hover { transform:scale(1.08); }
-    .person img { width:100%; height:100%; object-fit:cover; filter:brightness(0.8); transition:0.3s; }
-    .person:hover img { filter:brightness(1); }
-    .info { position:absolute; bottom:0; width:100%; padding:20px; background:linear-gradient(180deg,transparent,rgba(0,0,0,0.9)); text-align:center; }
-    .info h3 { color:var(--gold); font-family:'Playfair Display'; }
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.6rem);
+      line-height: 1.16;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
 
-    .pricing { background:radial-gradient(circle at top,var(--gold),#1a1a1a); padding:100px 20px; text-align:center; }
-    .pricing h2 { font-size:46px; font-family:'Playfair Display'; margin-bottom:30px; }
-    .price-box { display:inline-block; padding:40px 70px; background:rgba(255,255,255,0.05); border-radius:25px; border:1px solid var(--gold); box-shadow:0 0 25px rgba(212,175,55,0.4); }
-    .price { font-size:52px; color:var(--gold); font-weight:900; }
-    .price-box p { max-width:400px; margin:15px auto; }
-    .price-box button { margin-top:25px; padding:14px 30px; background:linear-gradient(90deg,var(--gold),#e6c55b); border:none; border-radius:30px; cursor:pointer; font-weight:700; }
+    .hero p { color: var(--muted); max-width: 60ch; }
 
-    .contact { padding:100px 20px; background:#0a0a0a; text-align:center; }
-    .contact h2 { color:var(--gold); font-family:'Playfair Display'; font-size:40px; margin-bottom:20px; }
-    .contact p { color:#ddd; margin-bottom:30px; }
-    form { max-width:500px; margin:auto; display:flex; flex-direction:column; gap:15px; }
-    input,textarea { padding:12px 15px; border:none; border-radius:8px; background:rgba(255,255,255,0.1); color:white; }
-    button.submit { padding:14px; background:linear-gradient(90deg,var(--gold),#f7d778); border:none; border-radius:25px; font-weight:700; color:#000; cursor:pointer; transition:0.3s; }
-    button.submit:hover { transform:scale(1.05); }
+    .cta-row {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
 
-    footer { text-align:center; padding:40px 10px; background:#000; color:#777; }
+    .btn {
+      border: none;
+      border-radius: 12px;
+      padding: 13px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: #05111a;
+      background: linear-gradient(90deg, var(--accent), #a2ffff);
+      box-shadow: 0 8px 24px rgba(87, 244, 255, 0.33);
+    }
+
+    .btn-secondary {
+      color: #d6e8ff;
+      border: 1px solid var(--border);
+      background: rgba(12, 18, 34, 0.7);
+    }
+
+    .glass {
+      border: 1px solid var(--border);
+      background: linear-gradient(165deg, rgba(20, 28, 52, 0.92), rgba(12, 18, 34, 0.7));
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .mini-stat {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mini-stat .item {
+      padding: 14px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .item strong { display: block; color: #fff; font-size: 1.05rem; }
+    .item span { color: var(--muted); font-size: 0.82rem; }
+
+    .section { padding: 74px 0; }
+    .section h2 {
+      font-size: clamp(1.6rem, 3.3vw, 2.5rem);
+      margin-bottom: 10px;
+    }
+
+    .section > .container > p.section-intro {
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 68ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      transition: transform 0.23s, border-color 0.23s;
+    }
+
+    .card:hover { transform: translateY(-4px); border-color: rgba(87, 244, 255, 0.5); }
+    .card h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .card p, .card li { color: var(--muted); font-size: 0.95rem; }
+    .card ul { padding-left: 20px; display: grid; gap: 7px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      border: 1px solid rgba(87, 244, 255, 0.38);
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: rgba(87, 244, 255, 0.08);
+    }
+
+    .ops {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid rgba(109, 124, 255, 0.45);
+      background: rgba(109, 124, 255, 0.11);
+      color: #c6d2ff;
+      font-size: 0.85rem;
+    }
+
+    .kpi-strip {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .kpi {
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--panel-2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .kpi b {
+      display: block;
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      border-top: 1px solid var(--border);
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .grid-3, .ops, .kpi-strip { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .navbar { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero-grid, .grid-3, .ops, .kpi-strip { grid-template-columns: 1fr; }
+      .hero { padding-top: 70px; }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Gold Essence</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#features">Features</a>
-      <a href="#team">Team</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container navbar">
+      <div class="brand"><span class="brand-badge">PB</span> Parcel Boy</div>
+      <nav>
+        <a href="#customer">Customer</a>
+        <a href="#rider">Rider</a>
+        <a href="#admin">Admin</a>
+        <a href="#ai">AI + Safety</a>
+        <a href="#stack">Tech Stack</a>
+      </nav>
+    </div>
   </header>
 
   <section class="hero" id="home">
-    <h2>Welcome to Gold Essence</h2>
-    <p>We build next-generation luxury websites with immersive visuals, realistic animations, and a golden touch. Perfect for businesses that deserve attention.</p>
-    <button class="cta" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore Features</button>
-  </section>
-
-  <section class="features" id="features">
-    <div class="feature"><h3>Live Animations</h3><img src="https://muffingroup.com/blog/wp-content/uploads/2019/05/content.jpg" alt="Animation Example"><p>Every page flows smoothly with interactive motion and elegant transitions.</p></div>
-    <div class="feature"><h3>Luxury Design</h3><img src="https://blog.templately.com/wp-content/uploads/2025/04/image-5.png" alt="Luxury Example"><p>Gold gradients, cinematic visuals, and a premium feel throughout.</p></div>
-    <div class="feature"><h3>Creative Templates</h3><img src="https://www.entheosweb.com/wp-content/uploads/2013/01/best-2012-one-page-templates.jpg" alt="Creative Template"><p>Modern templates for stunning one-page websites.</p></div>
-    <div class="feature"><h3>Modern UI</h3><img src="https://htmlburger.com/blog/wp-content/uploads/2022/06/One-Page-Website-Examples-Youmeme-Social-Network-Platform-Single-Page-Design-1024x576.jpg" alt="Modern UI"><p>Clean and interactive user interfaces for better UX.</p></div>
-  </section>
-
-  <section class="people-section" id="team">
-    <div class="person"><img src="https://www.sliderrevolution.com/wp-content/uploads/2021/09/FinWin-1.jpg" alt="Team Member"><div class="info"><h3>John Doe</h3></div></div>
-    <div class="person"><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/20_awesome-websites.jpg" alt="Team Member"><div class="info"><h3>Jane Smith</h3></div></div>
-  </section>
-
-  <section class="pricing" id="pricing">
-    <h2>Our Pricing</h2>
-    <div class="price-box">
-      <div class="price">₹4999</div>
-      <p>Complete luxury website package with live animations, responsive layout, and premium design.</p>
-      <button>Buy Now</button>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">⚡ Hyperlocal courier reimagined</span>
+        <h1>Parcel Boy — instant parcel pickup & delivery, smarter than traditional courier apps.</h1>
+        <p>
+          A modern, fast and reliable delivery ecosystem with dedicated Customer App, Rider App, and Admin Dashboard.
+          Designed with futuristic dark UI, real-time tracking, AI automation, safety controls, and scalable monetization.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#customer">Explore Platform</a>
+          <a class="btn btn-secondary" href="#stack">View Architecture</a>
+        </div>
+      </div>
+      <aside class="glass hero-panel">
+        <h3>Live Ops Snapshot</h3>
+        <div class="mini-stat">
+          <div class="item"><strong>&lt; 12m</strong><span>Express ETA</span></div>
+          <div class="item"><strong>97.9%</strong><span>On-time Delivery</span></div>
+          <div class="item"><strong>24/7</strong><span>AI Dispatch</span></div>
+        </div>
+        <p style="color: var(--muted); font-size: 0.94rem;">
+          Smart rider assignment, dynamic pricing guardrails, route optimization, batch dispatching, and automated support workflows.
+        </p>
+      </aside>
     </div>
   </section>
 
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>For inquiries, please reach out to us at <a href="mailto:darkuilabs@gmail.com" style="color:var(--gold);">darkuilabs@gmail.com</a></p>
-    <form>
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea placeholder="Your Message" rows="5"></textarea>
-      <button type="submit" class="submit">Send Message</button>
-    </form>
+  <section class="section" id="customer">
+    <div class="container">
+      <h2>👤 Customer App Features</h2>
+      <p class="section-intro">End users can book instant or scheduled deliveries, track riders live, pay with multiple modes, and enjoy a super-smooth ordering experience.</p>
+      <div class="grid-3">
+        <article class="card">
+          <span class="tag">🚚 Booking & Delivery</span>
+          <h3>Flexible delivery creation</h3>
+          <ul>
+            <li>Pickup + drop location with smart address auto-fill.</li>
+            <li>Parcel types: documents, food, electronics, fragile & more.</li>
+            <li>Instant booking + scheduled delivery option.</li>
+            <li>Express / Normal mode with fare estimate before booking.</li>
+            <li>One-click repeat order for frequent routes.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">📍 Tracking & Updates</span>
+          <h3>Live order visibility</h3>
+          <ul>
+            <li>Real-time GPS parcel tracking.</li>
+            <li>Live rider movement on map.</li>
+            <li>ETA countdown + delay alerts.</li>
+            <li>In-app chat & click-to-call rider support.</li>
+            <li>Delivery photo proof for trust and transparency.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">💳 Payments & Engagement</span>
+          <h3>Fast checkout with rewards</h3>
+          <ul>
+            <li>UPI, Cards, Wallet, and Cash on Delivery.</li>
+            <li>In-app wallet with cashback campaigns.</li>
+            <li>Auto-generated tax invoice and order history.</li>
+            <li>Push notifications: booking, assignment, completion.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    &copy; 2025 Gold Essence. All Rights Reserved.<br>
-    Developed by Mohammed Furkhan
+  <section class="section" id="rider">
+    <div class="container">
+      <h2>🏍️ Delivery Rider App</h2>
+      <p class="section-intro">Empower riders with intelligent dispatching, optimized navigation, transparent earnings, and demand insights to maximize completed deliveries per shift.</p>
+      <div class="grid-3">
+        <article class="card">
+          <span class="tag">📦 Delivery Management</span>
+          <h3>Control and proof workflows</h3>
+          <ul>
+            <li>Accept/reject job requests with SLA timer.</li>
+            <li>Turn-by-turn navigation via optimized routes.</li>
+            <li>Photo/signature proof upload on completion.</li>
+            <li>OTP confirmation for secure handoff.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">💰 Earnings Intelligence</span>
+          <h3>Financial transparency</h3>
+          <ul>
+            <li>Daily, weekly, monthly earnings dashboards.</li>
+            <li>Incentive tracker + bonus milestone alerts.</li>
+            <li>Payout visibility and settlement timeline.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">🧠 Smart Operations</span>
+          <h3>AI-assisted rider productivity</h3>
+          <ul>
+            <li>AI-suggested best route per delivery.</li>
+            <li>Heatmap of high-demand zones by hour.</li>
+            <li>Auto order batching for nearby drops.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="admin">
+    <div class="container">
+      <h2>🧑‍💼 Admin Dashboard</h2>
+      <p class="section-intro">A command center for live operations, finance controls, onboarding, compliance, complaints, and customer support management.</p>
+      <div class="ops">
+        <article class="card">
+          <span class="tag">📊 Monitoring + User Ops</span>
+          <h3>Live business visibility</h3>
+          <ul>
+            <li>Real-time orders map and status pipeline.</li>
+            <li>Revenue analytics and rider performance cards.</li>
+            <li>Customer/rider KYC verification management.</li>
+            <li>Document approvals: Aadhar, PAN, DL.</li>
+            <li>Rider onboarding with optional joining fee setup.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">💰 Finance + Service Resolution</span>
+          <h3>Control risk and service quality</h3>
+          <ul>
+            <li>Commission percentages per city or category.</li>
+            <li>Settlement tracking and refund workflows.</li>
+            <li>Complaint management and dispute resolution panel.</li>
+            <li>Built-in support chat for customer escalation.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="kpi-strip">
+        <div class="kpi"><b>Live Ops</b><span>Orders, riders, and exceptions in one screen.</span></div>
+        <div class="kpi"><b>Compliance</b><span>Centralized KYC and document governance.</span></div>
+        <div class="kpi"><b>Finance</b><span>Commission and payout automation controls.</span></div>
+        <div class="kpi"><b>CX</b><span>Ticketing + support SLA orchestration.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ai">
+    <div class="container">
+      <h2>🤖 AI, Safety & Growth Engines</h2>
+      <p class="section-intro">Parcel Boy differentiates with predictive intelligence, trust-first controls, and growth tools that increase retention and order volume.</p>
+      <div class="grid-3">
+        <article class="card">
+          <span class="tag">⭐ AI Integration</span>
+          <ul>
+            <li>Smart delivery assignment based on distance, load, and rider score.</li>
+            <li>Delivery delay prediction with proactive rerouting.</li>
+            <li>Customer behavior insights for personalized offers.</li>
+            <li>AI delivery time prediction shown pre-checkout.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">🛡 Safety Features</span>
+          <ul>
+            <li>OTP-based delivery confirmation.</li>
+            <li>Emergency SOS button for customer and rider apps.</li>
+            <li>Two-way rating and incident report system.</li>
+            <li>Photo proof + location stamped completion logs.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">📈 Growth Features</span>
+          <ul>
+            <li>Referral rewards and promo codes.</li>
+            <li>Subscription delivery plans for regular senders.</li>
+            <li>Bulk delivery plans for businesses.</li>
+            <li>Cross-sell ready modules for grocery/food expansion.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="container">
+      <h2>💻 Tech Stack & Monetization Blueprint</h2>
+      <p class="section-intro">Optimized for fast launch and reliable scale with modular architecture and future-ready integrations.</p>
+      <article class="card glass">
+        <h3>Suggested Stack</h3>
+        <div class="pill-list">
+          <span class="pill">Mobile: Flutter / React Native</span>
+          <span class="pill">Backend: Firebase / Node.js / Supabase</span>
+          <span class="pill">Maps: OpenStreetMap / Mapbox</span>
+          <span class="pill">Payments: Razorpay / PhonePe / COD</span>
+          <span class="pill">Notifications: FCM + SMS fallback</span>
+          <span class="pill">Analytics: Mixpanel / PostHog</span>
+        </div>
+      </article>
+      <div class="grid-3" style="margin-top: 18px;">
+        <article class="card"><h3>💸 Monetization</h3><p>Delivery commission, rider joining fee, subscriptions, and enterprise bulk delivery packages.</p></article>
+        <article class="card"><h3>🚀 Expansion Roadmap</h3><p>Grocery and food delivery add-ons, domestic-to-international fulfillment, and drone delivery exploration.</p></article>
+        <article class="card"><h3>⚙ Reliability</h3><p>Queue-based order events, retry-safe webhooks, realtime status sync, and observability dashboards.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Parcel Boy — Smart hyperlocal logistics platform concept • Built with a futuristic, performance-first UX.
+    </div>
   </footer>
 </body>
 </html>
